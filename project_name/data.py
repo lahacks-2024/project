@@ -4,7 +4,7 @@ stat_card_data = [
     [
         "Reliability Score",
         "87",    
-        "+2%",
+        "+2%",        
     ],
     [
         "Composition Score",
@@ -35,4 +35,9 @@ notes_data = [
         "Key Points",
         ["Industrial Revolution is significant", "Pollution is bad", "Communities were exploited"],
     ]
+]
+
+pie_chart_data = [
+    {"name": "Reliable", "value": 87},
+    {"name": "Unreliable", "value": 13}
 ]

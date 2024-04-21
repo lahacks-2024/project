@@ -4,7 +4,7 @@ import reflex as rx
 from project_name.navigation import navbar
 from project_name.template import template
 from project_name.pages.forms import forms
-from project_name.data import stat_card_data, summary_data, notes_data
+from project_name.data import stat_card_data, summary_data, notes_data, pie_chart_data
 from typing import List
 
 def card(*children, **props):
@@ -77,6 +77,7 @@ def content_grid():
         width="100%",
         gap=4,
         row_gap=4,
+        class_name="overflow-scroll"
     )
 
 def content_grid2():
@@ -93,8 +94,21 @@ def content_grid2():
         width="100%",
         gap=4,
         row_gap=4,
+        class_name="overflow-scroll"
     )
 
+def pie_chart():
+    return rx.recharts.pie_chart(
+        rx.recharts.pie(
+            data=pie_chart_data,
+            data_key="value",
+            name_key="name",
+            cx="50%",
+            cy="50%",
+            fill="#8884d8",
+            label=True,
+        )
+    )
 
 @template
 def index() -> rx.Component:
@@ -108,6 +122,15 @@ def index() -> rx.Component:
                 content_grid2(),
                 class_name="pb-8 px-8",
             ),
+            rx.box(
+                forms(),
+                class_name="pb-8 px-8",
+            ),
+            # rx.box(
+            #     pie_chart(),
+            #     class_name="flex border-t border-gray-200 pt-4 pb-8 px-8 justify-center !h-72",
+            #     template_columns="repeat(2, 1fr)",
+            # ),
             padding_left="250px",
-            class_name="max-[800px]:!pl-0",
+            class_name="max-[800px]:!pl-0 w-screen h-screen",
         )

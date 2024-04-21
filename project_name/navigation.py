@@ -116,4 +116,5 @@ def navbar(heading: str) -> rx.Component:
         padding_top="2em",
         padding_bottom="1em",
         backdrop_filter="blur(10px)",
+        class_name="max-[800px]:!w-screen"
     )
