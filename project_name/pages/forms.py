@@ -1,4 +1,14 @@
 import reflex as rx
+import os 
+import aiohttp 
+import google.generativeai as genai
+
+
+# Configure the API with your key at the start
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError("GEMINI_API_KEY is not set. Please set the environment variable.")
+genai.configure(api_key=api_key)
 
 class FormState(rx.State):
 
@@ -12,7 +22,8 @@ class UploadState(rx.State):
     "The app state."
 
     # The images to show.
-    img: list[str]
+    img: list[str] = []
+    evaluation_result = dict = {}
 
     async def handle_upload(
         self, files: list[rx.UploadFile]
@@ -77,9 +88,7 @@ def forms():
         rx.box(
             rx.button(
                 "Scan",
-                on_click=lambda: UploadState.handle_upload(
-                    rx.upload_files()
-                ),
+                on_click=lambda: UploadState.handle_upload(rx.upload_files()),
             ),
             rx.button(
                 "Clear",
