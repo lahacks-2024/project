@@ -123,7 +123,7 @@ def index() -> rx.Component:
                 class_name="pb-8 px-8",
             ),
             rx.box(
-                forms(),
+                # forms(),
                 class_name="pb-8 px-8",
             ),
             # rx.box(

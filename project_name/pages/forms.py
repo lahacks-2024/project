@@ -77,10 +77,11 @@ def forms():
         ),
         rx.hstack(rx.foreach(lambda: rx.selected_files, rx.text)),
         rx.box(
+        rx.box(
             rx.button("Scan", on_click=lambda: UploadState.handle_upload(rx.upload_files())),
             rx.button("Clear", on_click=rx.clear_selected_files),
             class_name="flex flex-row gap-4",
-        ),
+        ), 
         rx.foreach(lambda: UploadState.img, lambda img: rx.image(src=img, width="20%", height="auto")),
         width="100%",
         class_name="flex justify-center items-center",
