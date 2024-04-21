@@ -47,7 +47,7 @@ class UploadState(rx.State):
                 result = await process_uploaded_file(full_prompt)
                 self.evaluation_result = result
         except Exception as e:
-            self.error_message = str(e)
+            self.error_message = 'Error processing file'
         finally:
             self.processing = False
         

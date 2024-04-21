@@ -1,4 +1,4 @@
-import aiohttp
+
 import os
 import google.generativeai as genai
 from project_name.text_extraction import extract_text  # Replace with your actual text extraction module
