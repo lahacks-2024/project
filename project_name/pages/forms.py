@@ -1,18 +1,39 @@
+
 import reflex as rx
+
+import os
+
+import io
+
+from project_name.services import process_uploaded_file
+
+from project_name.text_extraction import extract_text
+
+
 
 class FormState(rx.State):
 
     form_data: dict = {}
 
+
+
     def handle_submit(self, form_data: dict):
+
         "Handle the form submit."
+
         self.form_data = form_data
 
-class UploadState(rx.State):
-    "The app state."
 
-    # The images to show.
-    img: list[str]
+
+class UploadState(rx.State):
+
+    img: list[str] = []
+
+    evaluation_result: dict = {}
+
+    processing: bool = False
+
+    error_message: str = ""
 
     async def handle_upload(
         self, files: list[rx.UploadFile]
