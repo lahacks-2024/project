@@ -3,7 +3,7 @@
 import reflex as rx
 from project_name.navigation import navbar
 from project_name.template import template
-from project_name.pages.forms import forms
+# from project_name.pages.forms import forms
 from project_name.data import stat_card_data
 
 def card(*children, **props):
@@ -43,7 +43,7 @@ def content_grid():
         template_columns="repeat(4, 1fr)",
         width="100%",
         gap=4,
-        row_gap=8,
+        row_gap=8
     )
 
 
@@ -54,12 +54,7 @@ def index() -> rx.Component:
             rx.box(
                 content_grid(),
                 class_name="pt-24 pb-8 px-8",
-            ),
-            rx.box(
-                forms(),
-                class_name="px-8"
-            ),
-            
+            )
             padding_left="250px",
             
         )

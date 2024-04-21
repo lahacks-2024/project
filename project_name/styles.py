@@ -2,6 +2,8 @@
 
 from reflex.components.radix import themes as rx
 
+COMPANY_LOGO_URL = "https://cdn-icons-png.flaticon.com/512/9908/9908191.png"
+
 THEME = rx.theme(
     appearance="dark",
     has_background=True,
@@ -11,7 +13,9 @@ THEME = rx.theme(
     panel_background="solid",
 )
 
-STYLESHEETS = ["https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"]
+STYLESHEETS = [
+    "/styles.css"  # This path is relative to assets/
+]
 
 FONT_FAMILY = "Inter"
 BACKGROUND_COLOR = "var(--accent-2)"
