@@ -11,7 +11,7 @@ THEME = rx.theme(
     panel_background="solid",
 )
 
-STYLESHEETS = ["https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"]
+STYLESHEETS = ["https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"]
 
-FONT_FAMILY = "Share Tech Mono"
+FONT_FAMILY = "Inter"
 BACKGROUND_COLOR = "var(--accent-2)"
