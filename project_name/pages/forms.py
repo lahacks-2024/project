@@ -57,33 +57,39 @@ def form_example():
         rx.text(FormState.form_data.to_string()),
     )
 
-
-rx.vstack(
-    rx.upload(
-        rx.vstack(
-            rx.button(
-                "Select File",
+def forms():
+    return rx.vstack(
+        rx.upload(
+            rx.vstack(
+                rx.button(
+                    "Select File",
+                    background_color="transparent",
+                    color="black"
+                )
             ),
             rx.text(
-                "Drag and drop files here or click to select files"
+                "Drag and drop files here or click to select files",
+                class_name="text-center"
             ),
+            class_name="flex flex-col justify-center items-center border-black border-2 rounded-lg p-12 w-96 h-48"
         ),
-        padding="5em",
-    ),
-    rx.hstack(rx.foreach(rx.selected_files, rx.text)),
-    rx.button(
-        "Upload",
-        on_click=lambda: UploadState.handle_upload(
-            rx.upload_files()
+        rx.hstack(rx.foreach(rx.selected_files, rx.text)),
+        rx.box(
+            rx.button(
+                "Scan",
+                on_click=lambda: UploadState.handle_upload(
+                    rx.upload_files()
+                ),
+            ),
+            rx.button(
+                "Clear",
+                on_click=rx.clear_selected_files,
+            ),
+            class_name="flex flex-row gap-4",
         ),
-    ),
-    rx.button(
-        "Clear",
-        on_click=rx.clear_selected_files,
-    ),
-    rx.foreach(
-        UploadState.img, lambda img: rx.image(src=img, width="20%", height="auto",)
-    ),
-    padding="5em",
-    width="100%",
-)
+        
+        rx.foreach(
+            UploadState.img, lambda img: rx.image(src=img, width="20%", height="auto",)
+        ),
+        width="100%",
+    )
