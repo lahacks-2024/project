@@ -10,7 +10,7 @@ if not api_key:
     raise ValueError("GEMINI_API_KEY is not set. Please set the environment variable.")
 genai.configure(api_key=api_key)
 
-prompt = "blah blah placeholder say whatssup"
+
 
 # Function to call Gemini API and get content generation
 async def call_gemini_api(prompt: str):
@@ -34,7 +34,8 @@ async def process_uploaded_file(file_stream, file_content_type: str):
     text_content = await extract_text(file_stream, file_content_type)
 
     # Prepend or append any necessary text to the content
-    full_prompt = prompt + text_content
+    #ADD HERE 
+    full_prompt = text_content
 
     # Call Gemini API with the full prompt
     gemini_result = await call_gemini_api(full_prompt)
