@@ -37,14 +37,22 @@ def sidebar(
     heading = props.get("heading", "NOT SET")
     return rx.vstack(
         rx.hstack(
-            rx.image(src=logo_src, height="28px", border_radius="8px"),
+            rx.image(
+                src=logo_src, 
+                height="100%", 
+                border_radius="8px",
+                class_name="flex justify-center items-center content-center"
+            ),
             rx.heading(
                 heading,
                 font_family=FONT_FAMILY,
                 size="7",
+                height="100%",
+                class_name="flex justify-center items-center content-center"
             ),
             width="100%",
             spacing="7",
+            class_name="flex flex-row justify-center items-center content-center h-10",
         ),
         rx.divider(margin_y="3"),
         rx.vstack(
@@ -60,15 +68,16 @@ def sidebar(
         z_index="10",
         backdrop_filter="blur(10px)",
         padding="2em",
+        class_name="max-[800px]:!hidden",
     )
 
 
 dashboard_sidebar = sidebar(
     sidebar_link(text="Dashboard", href="/", icon="bar_chart_3"),
-    sidebar_link(text="Tools", href="/tools", icon="settings"),
-    sidebar_link(text="Team", href="/team", icon="users"),
-    logo_src="/logo.jpg",
-    heading="REFLEX",
+    sidebar_link(text="Favorites", href="/favorites", icon="star"),
+    logo_src="/icon.png",
+    heading="VERSA",
+    class_name="flex flex-row justify-center items-center content-center",
 )
 
 

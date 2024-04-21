@@ -71,7 +71,7 @@ def forms():
                 "Drag and drop files here or click to select files",
                 class_name="text-center"
             ),
-            class_name="flex flex-col justify-center items-center border-black border-2 rounded-lg p-12 w-96 h-48"
+            class_name="flex flex-col justify-items-center justify-center items-center content-center border-black border-2 rounded-lg p-12 w-96 h-48"
         ),
         rx.hstack(rx.foreach(rx.selected_files, rx.text)),
         rx.box(
@@ -92,4 +92,5 @@ def forms():
             UploadState.img, lambda img: rx.image(src=img, width="20%", height="auto",)
         ),
         width="100%",
+        class_name="flex !justify-items-center !justify-center !items-center !content-center",
     )

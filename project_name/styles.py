@@ -3,7 +3,7 @@
 from reflex.components.radix import themes as rx
 
 THEME = rx.theme(
-    appearance="dark",
+    appearance="light",
     has_background=True,
     radius="large",
     accent_color="iris",

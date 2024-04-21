@@ -12,13 +12,27 @@ stat_card_data = [
         "+5%",
     ],
     [
-        "Originality Score",
-        "95",
-        "+2%",
-    ],
-    [
-        "Number of Citations",
-        "12",
+        "Author Credibility",
+        "62",
         "-3%",
     ],
+    [
+        "Journal Credibility",
+        "75",
+        "-3%",
+    ],
+]
+
+summary_data = [
+    [
+        "Summary",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    ],
+]
+
+notes_data = [
+    [
+        "Key Points",
+        ["Industrial Revolution is significant", "Pollution is bad", "Communities were exploited"],
+    ]
 ]
