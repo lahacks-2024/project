@@ -1,7 +1,9 @@
 import reflex as rx
 import os 
-import aiohttp 
+import io 
+from project_name.services import process_uploaded_file
 import google.generativeai as genai
+from project_name.text_extraction import extract_text
 
 
 # Configure the API with your key at the start
@@ -9,6 +11,10 @@ api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("GEMINI_API_KEY is not set. Please set the environment variable.")
 genai.configure(api_key=api_key)
+
+preprompt = os.getenv("PREPROMPT")
+if not preprompt:
+    raise ValueError("PREPROMPT is not set. Please set the environment variable.")
 
 class FormState(rx.State):
 
@@ -24,21 +30,28 @@ class UploadState(rx.State):
     # The images to show.
     img: list[str] = []
     evaluation_result = dict = {}
+    processing: bool = False
+    error_message: str = ""
+
 
     async def handle_upload(
         self, files: list[rx.UploadFile]
     ):
         "Handle the upload of file(s)."
+        self.processing = True
+        try:
+            for file in files: 
+                content_type = file.content_type
+                file_data = await file.read()
+                full_prompt = preprompt + await extract_text(io.BytesIO(file_data), content_type)
+                result = await process_uploaded_file(full_prompt)
+                self.evaluation_result = result
+        except Exception as e:
+            self.error_message = str(e)
+        finally:
+            self.processing = False
         
-        for file in files:
-            upload_data = await file.read()
-            outfile = rx.get_asset_path(file.filename)
-            # Save the file.
-            with open(outfile, "wb") as file_object:
-                file_object.write(upload_data)
-
-            # Update the img var.
-            self.img.append(f"/{file.filename}")
+        
 
 from project_name.template import template
 

@@ -1,20 +1,26 @@
 import aiohttp
 import os
+import google.generativeai as genai
 from project_name.text_extraction import extract_text  # Replace with your actual text extraction module
 
 
+# Configure the API with your key at the start
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError("GEMINI_API_KEY is not set. Please set the environment variable.")
+genai.configure(api_key=api_key)
 
-
+prompt = "blah blah placeholder say whatssup"
 
 
 # Function to call Gemini API and get content generation
 async def call_gemini_api(prompt: str):
-    headers = {"Authorization": f"Bearer {GEMINI_API_KEY}"}
+    headers = {"Authorization": f"Bearer {api_key}"}
     model = genai.GenerativeModel('gemini-pro')
-    payload = {"model": GEMINI_MODEL_NAME, "prompt": prompt}
+    payload = {"model": model, "prompt": prompt}
 
     async with aiohttp.ClientSession() as session:
-        async with session.post(GEMINI_API_ENDPOINT, headers=headers, json=payload) as response:
+        async with session.post(api_key, headers=headers, json=payload) as response:
             if response.status == 200:
                 result = await response.json()
                 return result['output']
@@ -36,7 +42,7 @@ async def process_uploaded_file(file_data, file_content_type: str):
     gemini_result = await call_gemini_api(full_prompt)
     
     # Parse the result for numerical data
-    numerical_data = parse_gemini_result(gemini_result)
+    numerical_data = parse_gemini_output(gemini_result)
     
     return numerical_data
 
