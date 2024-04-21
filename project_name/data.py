@@ -1,5 +1,7 @@
 import reflex as rx
 
+
+
 stat_card_data = [
     [
         "Reliability Score",
@@ -26,7 +28,7 @@ stat_card_data = [
 summary_data = [
     [
         "Summary",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Lorem",
     ],
 ]
 

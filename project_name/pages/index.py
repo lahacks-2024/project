@@ -6,6 +6,20 @@ from project_name.template import template
 from project_name.pages.forms import forms
 from project_name.data import stat_card_data, summary_data, notes_data
 from typing import List
+import asyncio
+from project_name.services import call_gemini_api, parse_gemini_output
+
+async def get_gemini_results() -> str:
+    """Fetches results from the Gemini API."""
+    prompt = "Please provide a summary of the current paper."
+    try:
+        gemini_output = await call_gemini_api(prompt)
+        return parse_gemini_output(gemini_output)
+    except Exception as e:
+        print(f"An error occurred while fetching Gemini results: {str(e)}")
+        return "Error: Unable to fetch results."
+
+
 
 def card(*children, **props):
     return rx.card(
@@ -34,6 +48,14 @@ def stat_card(title: str, stat, delta) -> rx.Component:
         ),
     )
 
+def update_button() -> rx.Component:
+    async def on_click(event):
+        gemini_summary_content = await dynamic_summary_content()
+        # Update the UI with gemini_summary_content
+        # This step depends on how your UI framework handles dynamic updates
+
+    return rx.button("Update Summary", on_click=on_click)
+
 def summary_card(title: str, stat) -> rx.Component:
     return card(
         rx.hstack(
@@ -47,6 +69,12 @@ def summary_card(title: str, stat) -> rx.Component:
             ),
         ),
     )
+
+async def dynamic_summary_content():
+    """Fetches and displays the Gemini API output within a summary card."""
+    gemini_text = await get_gemini_results()  # Fetch the paragraph text from Gemini
+    return summary_card(gemini_text)
+
 
 def notes_card(title: str, notes: List[str]) -> rx.Component:
     notes_components = [
@@ -111,3 +139,4 @@ def index() -> rx.Component:
             padding_left="250px",
             class_name="max-[800px]:!pl-0",
         )
+
