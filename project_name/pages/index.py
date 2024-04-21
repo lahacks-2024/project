@@ -54,7 +54,7 @@ def index() -> rx.Component:
             rx.box(
                 content_grid(),
                 class_name="pt-24 pb-8 px-8",
-            )
+            ),
             padding_left="250px",
             
         )

@@ -38,6 +38,8 @@ def form_example():
                     name="paper_URL",
                 ),
                 rx.button("Submit", type="submit"),
+                width="100%",
+                justify="center",
             ),
             on_submit=FormState.handle_submit,
             reset_on_submit=True,

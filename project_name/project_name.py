@@ -1,8 +1,8 @@
 """The main Dashboard App."""
 
-from rxconfig import config
-
 import reflex as rx
+
+from rxconfig import config
 
 from project_name.styles import BACKGROUND_COLOR, FONT_FAMILY, THEME, STYLESHEETS
 
@@ -14,7 +14,7 @@ from project_name.pages.forms import forms
 # Create app instance and add index page.
 app = rx.App(
     theme=THEME,
-    stylesheets=STYLESHEETS,
+    stylesheets=STYLESHEETS
 )
 
 # app.add_page(index, route="/")

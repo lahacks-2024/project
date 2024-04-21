@@ -36,7 +36,7 @@ from project_name.template import template
 
 def url_form():
     return rx.vstack(
-        rx.image(src="COMPANY_LOGO_URL", width="200px"),
+        # rx.image(src="COMPANY_LOGO_URL", width="200px"),
         rx.form(
             rx.vstack(
                 rx.input(
@@ -90,12 +90,12 @@ def forms() -> rx.Component:
                 "Clear",
                 on_click=rx.clear_selected_files,
             ),
-            # class_name="flex flex-row gap-4",
-            class_name="form-div",
+            class_name="flex flex-row gap-4",
         ),
         
         rx.foreach(
             UploadState.img, lambda img: rx.image(src=img, width="20%", height="auto",)
         ),
         width="100%",
+        class_name="flex flex-col !justify-center !items-center"
     )

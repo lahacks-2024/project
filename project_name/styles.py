@@ -2,7 +2,7 @@
 
 from reflex.components.radix import themes as rx
 
-COMPANY_LOGO_URL = "https://cdn-icons-png.flaticon.com/512/9908/9908191.png"
+# COMPANY_LOGO_URL = "https://cdn-icons-png.flaticon.com/512/9908/9908191.png"
 
 THEME = rx.theme(
     appearance="dark",
